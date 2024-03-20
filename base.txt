@@ -1,3 +1,4 @@
+--Hola mundo
 CREATE TABLE IF NOT EXISTS actividad
 (
     id_actividad INT AUTO_INCREMENT,
