@@ -1,0 +1,80 @@
+CREATE TABLE IF NOT EXISTS actividad
+(
+    id_actividad INT AUTO_INCREMENT,
+    titulo VARCHAR(50) NOT NULL,
+    descripcion VARCHAR(100) NOT NULL,
+    fecha_inicio DATE NOT NULL,
+    fecha_fin DATE NOT NULL,
+    estado VARCHAR(20) NOT NULL,
+    id_categoria INT NOT NULL,
+    PRIMARY KEY (id_actividad)
+);
+
+CREATE TABLE IF NOT EXISTS categoria
+(
+    id_categoria INT AUTO_INCREMENT,
+    nombre VARCHAR(50) NOT NULL,
+    PRIMARY KEY (id_categoria)
+);
+
+CREATE TABLE IF NOT EXISTS grupo
+(
+    id_grupo INT AUTO_INCREMENT,
+    nombre VARCHAR(50) NOT NULL,
+    id_actividad INT NOT NULL,
+    PRIMARY KEY (id_grupo)
+);
+
+CREATE TABLE IF NOT EXISTS rol_grupo
+(
+    id INT AUTO_INCREMENT,
+    cargo VARCHAR(50) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS rol_usuario
+(
+    id_rol INT AUTO_INCREMENT,
+    cargo VARCHAR(50) NOT NULL,
+    PRIMARY KEY (id_rol)
+);
+
+CREATE TABLE IF NOT EXISTS seguimiento
+(
+    id_seguimiento INT AUTO_INCREMENT,
+    estado VARCHAR(50) NOT NULL,
+    hora_modificacion TIME NOT NULL,
+    id_usuario_grupo_tarea INT NOT NULL,
+    PRIMARY KEY (id_seguimiento)
+);
+
+CREATE TABLE IF NOT EXISTS tarea
+(
+    id_tarea INT AUTO_INCREMENT,
+    titulo VARCHAR(50) NOT NULL,
+    descripcion VARCHAR(100) NOT NULL,
+    fecha_inicio DATE NOT NULL,
+    fecha_fin DATE NOT NULL,
+    id_actividad INT NOT NULL,
+    PRIMARY KEY (id_tarea)
+);
+
+CREATE TABLE IF NOT EXISTS usuario
+(
+    id_usuario INT AUTO_INCREMENT,
+    nombre VARCHAR(50) NOT NULL,
+    carnet VARCHAR(7) NOT NULL,
+    clave VARCHAR(70) NOT NULL,
+    id_rol INT NOT NULL,
+    PRIMARY KEY (id_usuario)
+);
+
+CREATE TABLE IF NOT EXISTS usuario_grupo_tarea
+(
+    id_usuario_grupo_tarea INT AUTO_INCREMENT,
+    id_usuario INT NOT NULL,
+    id_grupo INT NOT NULL,
+    id_tarea INT NOT NULL,
+    id_rol INT NOT NULL,
+    PRIMARY KEY (id_usuario_grupo_tarea)
+);
